@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piotr Paszko - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Print-optimized CSS */
+        :root {
+            --primary: #2d3748;
+            --secondary: #4a5568;
+            --accent: #667eea;
+            --text: #1a202c;
+            --light-text: #4a5568;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: #fff;
+            width: 210mm; /* A4 width */
+            margin: 0 auto;
+            padding: 15mm; /* Margins */
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .header-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .header-text h2 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0;
+        }
+
+        .header-contact {
+            font-size: 13px;
+            color: var(--light-text);
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .header-contact a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        /* CV Badge */
+        .cv-badge {
+            display: inline-block;
+            text-decoration: none;
+            border: 3px solid var(--accent);
+            padding: 10px 30px;
+            border-radius: 50px; /* Pill shape */
+            color: var(--accent);
+            background: #f8faff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1);
+        }
+
+        .cv-badge-title {
+            display: block;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .cv-badge-url {
+            display: block;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        h3.section-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Content Blocks */
+        .content-block {
+            margin-bottom: 15px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .company {
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .date {
+            font-size: 12px;
+            color: #718096;
+            font-style: italic;
+        }
+
+        .description {
+            font-size: 13px;
+            color: var(--light-text);
+            text-align: justify;
+        }
+
+        .tags {
+            margin-top: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background: #f7fafc;
+            border: 1px solid #cbd5e0;
+            color: #4a5568;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 5px;
+        }
+
+        .skill-item {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        /* Certifications */
+        .cert-item {
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cert-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .cert-info h4 {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cert-info p {
+            font-size: 10px;
+            color: var(--light-text);
+        }
+
+        /* Projects - Expanded */
+        .project-block {
+            border-left: 2px solid var(--border);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .project-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .project-sub {
+            font-size: 12px;
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .project-details ul {
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+
+        .project-details li {
+            font-size: 12px;
+            margin-bottom: 3px;
+            color: var(--light-text);
+        }
+
+        /* About List */
+        .about-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 5px;
+        }
+
+        .about-list li {
+            font-size: 13px;
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .about-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        @media print {
+            body {
+                width: 100%;
+                padding: 0;
+                background: white;
+            }
+            
+            @page {
+                margin: 1cm;
+            }
+            
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-profile">
+            <img src="1688148199013.jpeg" alt="Piotr Paszko" class="profile-photo">
+            <div class="header-text">
+                <h1>Piotr Paszko</h1>
+                <h2>Cloud DevOps Engineer | Cloud Security Engineer | CISSP | SC-100</h2>
+            </div>
+        </div>
+        
+        <div class="header-contact">
+            <div>p.j.paszko@gmail.com</div>
+            <div>Remote / Poland</div>
+            <div>linkedin.com/in/piotr-paszko-235b38192/</div>
+            <div>github.com/Pjjp</div>
+        </div>
+    </header>
+
+    <section id="summary" style="position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h3 class="section-title">Professional Summary</h3>
+            
+            <a href="https://pjjp.github.io/PiotrPaszkoCV/" class="cv-badge" target="_blank" style="margin-top: -5px;">
+                <span class="cv-badge-title">🌐 Interactive Portfolio</span>
+                <span class="cv-badge-url">pjjp.github.io/PiotrPaszkoCV</span>
+            </a>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <p class="description" style="font-weight: 600; margin-bottom: 5px;">My work centers around three key pillars:</p>
+            <ul class="about-list">
+                <li>Cloud environment security audits</li>
+                <li>Implementing targeted security fixes</li>
+                <li>Building security automation and secure IaC</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h3 class="section-title">Work Experience</h3>
+        
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Cloud Security Engineer / Cloud DevOps Engineer</span>
+                    <span class="company"> - Software Mind</span>
+                </div>
+                <span class="date">July 2024 - Present</span>
+            </div>
+            <p class="description">
+                I secure and improve Azure environments through security architecture, automation, and environment hardening. I perform Azure security audits, identify weaknesses, and drive targeted remediation. I strengthen posture with Defender for Cloud, security baselines, and Azure Policy. I build DevSecOps automation with Azure DevOps and Terraform/Bicep, handle incident response and alert triage, and work with developers to ensure secure, compliant application environments.
+            </p>
+            <div class="tags">
+                <span class="tag">Azure Security</span>
+                <span class="tag">Kubernetes (AKS)</span>
+                <span class="tag">Terraform</span>
+                <span class="tag">Azure DevOps</span>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Cloud DevOps Engineer</span>
+                    <span class="company"> - Accenture Poland</span>
+                </div>
+                <span class="date">July 2023 - June 2024</span>
+            </div>
+            <p class="description">
+                Managed Azure cloud infrastructure with strong emphasis on security compliance. Developed infrastructure as code using Bicep and PowerShell, implemented CI/CD pipelines, and ensured security best practices across cloud resources.
+            </p>
+            <div class="tags">
+                <span class="tag">Azure Security</span>
+                <span class="tag">Bicep</span>
+                <span class="tag">PowerShell</span>
+                <span class="tag">CI/CD</span>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Junior DevOps Engineer</span>
+                    <span class="company"> - Capgemini</span>
+                </div>
+                <span class="date">August 2022 - June 2023</span>
+            </div>
+            <p class="description">
+                Worked with OpenShift (Kubernetes) platform, automated infrastructure provisioning with Ansible, and managed RedHat environments. Built and maintained CI/CD pipelines using Jenkins and orchestrated data workflows with Apache Airflow.
+            </p>
+            <div class="tags">
+                <span class="tag">OpenShift</span>
+                <span class="tag">Ansible</span>
+                <span class="tag">Jenkins</span>
+                <span class="tag">RedHat</span>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Junior Linux Admin/DevOps</span>
+                    <span class="company"> - Asseco Business Solutions S.A.</span>
+                </div>
+                <span class="date">May 2021 - July 2022</span>
+            </div>
+            <p class="description">
+                Administered Linux systems, developed Python automation scripts with FastAPI, and managed containerized applications using Docker and Kubernetes. Implemented infrastructure as code with Terraform on AWS.
+            </p>
+            <div class="tags">
+                <span class="tag">Linux</span>
+                <span class="tag">Python</span>
+                <span class="tag">Kubernetes</span>
+                <span class="tag">AWS</span>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Junior Full Stack Developer</span>
+                    <span class="company"> - cosphereorg</span>
+                </div>
+                <span class="date">September 2019 - August 2020</span>
+            </div>
+            <p class="description">
+                Developed full-stack applications with Python backend and Angular frontend. Implemented data scraping solutions and applied machine learning algorithms for data analysis. Managed state with Ngrx and ensured code quality.
+            </p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Angular</span>
+                <span class="tag">Ngrx</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Scraping</span>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Junior Developer - Intern</span>
+                    <span class="company"> - Viessmann Research & Development Center</span>
+                </div>
+                <span class="date">July 2019 - August 2019</span>
+            </div>
+            <p class="description">
+                Developed Python backend applications using Django framework. Worked with Docker for containerization, implemented unit tests, and handled database operations including Apache Spark for data processing.
+            </p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Django</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Spark</span>
+                <span class="tag">Unit Tests</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h3 class="section-title">Certifications</h3>
+        <div class="grid-2">
+            <div class="cert-item">
+                <img src="assets/badges/cissp.svg" class="cert-icon" alt="CISSP">
+                <div class="cert-info">
+                    <h4>CISSP (Certified Information Systems Security Professional)</h4>
+                    <p>ISC2 (Exam Passed)</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/microsoft.svg" class="cert-icon" alt="SC-100">
+                <div class="cert-info">
+                    <h4>Microsoft Certified: Cybersecurity Architect Expert</h4>
+                    <p>Microsoft</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/aws.svg" class="cert-icon" alt="AWS ML">
+                <div class="cert-info">
+                    <h4>AWS Certified Machine Learning Engineer – Associate</h4>
+                    <p>Amazon Web Services</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/terraform.svg" class="cert-icon" alt="Terraform">
+                <div class="cert-info">
+                    <h4>HashiCorp Certified: Terraform Associate (003)</h4>
+                    <p>HashiCorp</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/csa.svg" class="cert-icon" alt="CCSK">
+                <div class="cert-info">
+                    <h4>Certificate of Cloud Security Knowledge v.5</h4>
+                    <p>Cloud Security Alliance</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/microsoft.svg" class="cert-icon" alt="AZ-700">
+                <div class="cert-info">
+                    <h4>Azure Network Engineer Associate</h4>
+                    <p>Microsoft</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/microsoft.svg" class="cert-icon" alt="AZ-500">
+                <div class="cert-info">
+                    <h4>Azure Security Engineer Associate</h4>
+                    <p>Microsoft</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <img src="assets/badges/microsoft.svg" class="cert-icon" alt="AZ-104">
+                <div class="cert-info">
+                    <h4>Azure Administrator Associate</h4>
+                    <p>Microsoft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h3 class="section-title">Core Expertise</h3>
+        <div class="grid-2">
+            <div class="skill-item">
+                <span>🏗️</span>
+                <span>Azure security architecture assessments & recommendations</span>
+            </div>
+            <div class="skill-item">
+                <span>🛡️</span>
+                <span>Azure Policy, Defender for Cloud, security baselines</span>
+            </div>
+            <div class="skill-item">
+                <span>🔒</span>
+                <span>Private Endpoints, network segmentation, VNet isolation</span>
+            </div>
+            <div class="skill-item">
+                <span>🚀</span>
+                <span>DevSecOps automation (Azure DevOps, Terraform)</span>
+            </div>
+            <div class="skill-item">
+                <span>☸️</span>
+                <span>AKS security (pod controls, network policies)</span>
+            </div>
+            <div class="skill-item">
+                <span>🔐</span>
+                <span>Zero Trust, identity governance, privilege reduction</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h3 class="section-title">Key Personal Projects</h3>
+        
+        <div class="project-block">
+            <div class="project-header">
+                <span class="project-title">Secure Cloud & Kubernetes Architecture</span>
+                <span class="project-sub">Master's Thesis Project</span>
+            </div>
+            <p class="description">
+                A comprehensive implementation of cloud security best practices covering AWS infrastructure hardening with Terraform, Kubernetes (EKS) security using RBAC and Network Policies, and secure application development.
+            </p>
+            <div class="project-details">
+                <ul>
+                    <li><strong>Infrastructure Hardening:</strong> Terraform modules for secure VPC, IAM, and Security Groups.</li>
+                    <li><strong>Kubernetes Security:</strong> Implementation of RBAC, Network Policies, and Pod Security Standards.</li>
+                    <li><strong>Application Security:</strong> OWASP Top 10 mitigation strategies implemented in Angular and Python.</li>
+                    <li><strong>DevSecOps:</strong> CI/CD with SAST/DAST and container image scanning.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-block">
+            <div class="project-header">
+                <span class="project-title">Lakey-Service</span>
+                <span class="project-sub">Scalable Data Lake Access</span>
+            </div>
+            <p class="description">
+                A scalable data lake access service enabling thousands of clients to connect to expensive data lakes via HTTP/Websockets for efficient data retrieval.
+            </p>
+            <div class="project-details">
+                <ul>
+                    <li><strong>Architecture:</strong> Microservice design with Auth, Catalogue, and Downloader modules.</li>
+                    <li><strong>Security:</strong> Secure auth token management and access control permissions.</li>
+                    <li><strong>Tech Stack:</strong> Python, Jupyter, Websockets, HTTP APIs.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h3 class="section-title">Education</h3>
+        <div class="content-block">
+            <div class="job-header">
+                <span class="job-title">Master's Degree in Computer Science</span>
+                <span class="date">2022 - 2024</span>
+            </div>
+            <div class="company">Warsaw School of Computer Science</div>
+            <p class="description">Focus on cloud computing, distributed systems, and software architecture.</p>
+        </div>
+        <div class="content-block">
+            <div class="job-header">
+                <span class="job-title">Bachelor's Degree in Cybersecurity</span>
+                <span class="date">2018 - 2022</span>
+            </div>
+            <div class="company">Wrocław University of Science and Technology</div>
+            <p class="description">Comprehensive program covering network security, cryptography, and threat analysis.</p>
+        </div>
+    </section>
+
+</body>
+</html>
+
