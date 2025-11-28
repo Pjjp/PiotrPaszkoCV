@@ -365,7 +365,11 @@ body {
     font-weight: 600;
     color: var(--dark);
     margin-bottom: 20px;
-    min-height: 60px;
+    min-height: auto;
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .typing-text {
@@ -597,69 +601,34 @@ body {
     line-height: 1.8;
 }
 
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.about-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--gray);
+}
+
+.about-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
 .about-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 50px;
-}
-
-/* Featured Certification Style */
-.cert-card.featured {
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    /* Even subtler border */
-    background: linear-gradient(145deg, #232526, #414345);
-    /* More neutral dark grey gradient */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.05);
-    /* Very soft shadow */
-    transform: scale(1.02);
-    /* Minimal scale */
-    z-index: 10;
-    color: #fff;
-}
-
-.cert-card.featured:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.15);
-    border-color: rgba(255, 215, 0, 0.6);
-}
-
-.cert-card.featured .cert-title {
-    color: #f0e68c;
-    /* Khaki/Soft Gold instead of bright gold */
-    text-shadow: none;
-}
-
-.cert-card.featured .cert-provider {
-    color: #e0e0e0;
-}
-
-.cert-card.featured .cert-tag {
-    background: rgba(255, 215, 0, 0.15);
-    color: #ffd700;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-/* Removed ribbon (::before) as requested */
-
-/* Add a glow animation */
-@keyframes borderGlow {
-
-    0%,
-    100% {
-        border-color: rgba(255, 215, 0, 0.5);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.1);
-    }
-
-    50% {
-        border-color: rgba(255, 215, 0, 0.8);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 215, 0, 0.2);
-    }
-}
-
-.cert-card.featured {
-    animation: borderGlow 4s infinite;
-    /* Slower animation */
 }
 
 .stat-item {
@@ -815,7 +784,7 @@ body {
 
 /* ===== SKILLS SECTION ===== */
 .skills {
-    background: var(--light);
+    background: var(--gray-light);
 }
 
 /* ===== SKILLS SECTION ===== */
@@ -1080,7 +1049,7 @@ body.dark-mode .competency-category h3 {
 
 /* ===== EDUCATION SECTION ===== */
 .education {
-    background: var(--gray-light);
+    background: var(--light);
 }
 
 .education-grid {
@@ -1177,6 +1146,61 @@ body.dark-mode .competency-category h3 {
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards;
 }
+
+
+/* Featured Certification Style */
+.cert-card.featured {
+    background: linear-gradient(145deg, #232526, #414345);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.05);
+    transform: scale(1.02);
+    z-index: 10;
+    color: #fff;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    /* Combine animations: fade in AND border glow */
+    animation: fadeInUp 0.6s ease-out forwards, borderGlow 4s infinite;
+    opacity: 0; /* Ensure start state matches fadeInUp */
+}
+
+.cert-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.cert-card.featured .cert-title {
+    color: #f0e68c;
+    /* Khaki/Soft Gold instead of bright gold */
+    text-shadow: none;
+}
+
+.cert-card.featured .cert-provider {
+    color: #e0e0e0;
+}
+
+.cert-card.featured .cert-tag {
+    background: rgba(255, 215, 0, 0.15);
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Add a glow animation */
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        border-color: rgba(255, 215, 0, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.1);
+    }
+
+    50% {
+        border-color: rgba(255, 215, 0, 0.8);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 215, 0, 0.2);
+    }
+}
+
+/* .cert-card.featured {
+    animation: borderGlow 4s infinite;
+} */
 
 .cert-card:nth-child(1) {
     animation-delay: 0.05s;
@@ -1741,3 +1765,357 @@ body.dark-mode .competency-category h3 {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ===== CORE SKILLS GRID (NEW) ===== */
+.core-areas-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.core-areas-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.core-areas-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.core-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.core-skill-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effects */
+.core-skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.core-skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.core-skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--gray-light);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+    font-size: 1.8rem;
+}
+
+.core-skill-card:hover .skill-icon-wrapper {
+    background: var(--gradient-primary);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.skill-text {
+    color: var(--dark);
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 1.05rem;
+}
+
+/* Responsive adjustments for the grid */
+@media (max-width: 768px) {
+    .core-skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .core-skill-card {
+        padding: 20px;
+    }
+    
+    .skill-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    transform: translateY(50px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: modalSlideIn 0.4s forwards;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-modal {
+    color: var(--gray);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--gray-light);
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--primary);
+    text-decoration: none;
+    background: rgba(102, 126, 234, 0.1);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 40px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Modal Content Styles */
+.modal-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    padding-right: 40px;
+}
+
+.modal-subtitle {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.modal-image-container {
+    margin: 30px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.modal-image:hover {
+    transform: scale(1.02);
+}
+
+.modal-section {
+    margin-bottom: 30px;
+}
+
+.modal-section-title {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-section-title::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 25px;
+    background: var(--gradient-primary);
+    border-radius: 5px;
+}
+
+.modal-text {
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.modal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    color: var(--gray);
+}
+
+.modal-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Custom Scrollbar for Modal */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--gray-light);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 2% auto;
+    }
+    
+    .modal-body {
+        padding: 25px;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Fix for certification icons to allow images */
+.cert-badge {
+    padding: 15px; /* Add padding so image doesn't touch edges */
+    background: #fff; /* White background for badges looks better */
+    border: 1px solid var(--gray-light);
+}
+
+.cert-card.featured .cert-badge {
+    background: rgba(255, 255, 255, 0.1); /* Transparent for dark mode featured cards */
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.cert-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0; /* Hide any fallback text */
+}
+
+.cert-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+

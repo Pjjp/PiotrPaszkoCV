@@ -1,0 +1,29 @@
+
+/* Fix for certification icons to allow images */
+.cert-badge {
+    padding: 15px; /* Add padding so image doesn't touch edges */
+    background: #fff; /* White background for badges looks better */
+    border: 1px solid var(--gray-light);
+}
+
+.cert-card.featured .cert-badge {
+    background: rgba(255, 255, 255, 0.1); /* Transparent for dark mode featured cards */
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.cert-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0; /* Hide any fallback text */
+}
+
+.cert-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
