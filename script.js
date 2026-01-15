@@ -54,7 +54,7 @@ function updateActiveNavLink() {
 // ===== TYPING ANIMATION =====
 const typingText = document.querySelector('.typing-text');
 const phrases = [
-    'Cloud DevOps Engineer | Cloud Security Engineer | CISSP | SC-100',
+    'Cloud Security Engineer | CISSP | SC-100',
 ];
 
 let phraseIndex = 0;
